@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\RapidJson">
+      <UniqueIdentifier>{35b63b64-4129-4181-8f38-86f68b512d8f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -36,6 +39,42 @@
     <ClInclude Include="Controller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\rapidjson\autolink.h">
+      <Filter>Header Files\RapidJson</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\rapidjson\config.h">
+      <Filter>Header Files\RapidJson</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\rapidjson\features.h">
+      <Filter>Header Files\RapidJson</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\rapidjson\forwards.h">
+      <Filter>Header Files\RapidJson</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\rapidjson\json.h">
+      <Filter>Header Files\RapidJson</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\rapidjson\json_batchallocator.h">
+      <Filter>Header Files\RapidJson</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\rapidjson\reader.h">
+      <Filter>Header Files\RapidJson</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\rapidjson\value.h">
+      <Filter>Header Files\RapidJson</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\rapidjson\writer.h">
+      <Filter>Header Files\RapidJson</Filter>
+    </ClInclude>
+    <ClInclude Include="CoinNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -56,5 +95,36 @@
     <ClCompile Include="Controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AudioPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\rapidjson\json_reader.cpp">
+      <Filter>Header Files\RapidJson</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\rapidjson\json_value.cpp">
+      <Filter>Header Files\RapidJson</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\rapidjson\json_writer.cpp">
+      <Filter>Header Files\RapidJson</Filter>
+    </ClCompile>
+    <ClCompile Include="CoinNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Analyzer.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Include\rapidjson\json_internalarray.inl">
+      <Filter>Header Files\RapidJson</Filter>
+    </None>
+    <None Include="Include\rapidjson\json_internalmap.inl">
+      <Filter>Header Files\RapidJson</Filter>
+    </None>
+    <None Include="Include\rapidjson\json_valueiterator.inl">
+      <Filter>Header Files\RapidJson</Filter>
+    </None>
   </ItemGroup>
 </Project>

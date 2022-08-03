@@ -76,13 +76,8 @@ typedef unsigned long long			u64;
 #define  YELLOW			FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN
 #define  WHITE			FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE
 
+#define	NAMED_MUTEX_CONSTANT_TEXT	L"MyAnalyzerProgramThatRunsEveryday.1.0.0.0"
 
-#define	NAMED_MUTEX_CONSTANT_TEXT	L"MyAnalyzerProgramThatRunsEverydayandEverytime.blahblahblah"
-
-///////////////////////////////////////////////
-//			Client to Server Events			 //
-///////////////////////////////////////////////
-//bool			getMyIP						(IPv4 & myIP);
 
 void			LOGIData					(char* buffer, int color);
 int				color_printf				(int color, char* string, ...);

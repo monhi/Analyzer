@@ -38,21 +38,21 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	CController* m_pController = new CController();
-	LOGIData("Server is started. to quit: press ESC button ...", GREEN);
-
+	LOGIData("Analyzer server is started. to quit: press ESC button ...", GREEN);
+	system("cls");
 	int ch;
 	while ((ch = _getch()) != 27)
 	{
+
 		Sleep(200);
 	}
 	delete m_pController;
-	sprintf(logbuff, "Finishing EMBEDDED SLS server version %d.%d.%d.%d  ...\n", i1, i2, i3, i4);
+	sprintf(logbuff, "Finishing Analyzer server version %d.%d.%d.%d  ...\n", i1, i2, i3, i4);
 	LOGIData(logbuff, GREEN);
+
 	//PLOG_INFO << "Program exit.";
 	Sleep(1000);
 	delete m_instance;
-	return SUCCESS;
-
 	return SUCCESS;
 }
 

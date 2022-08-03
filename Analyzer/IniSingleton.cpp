@@ -1,4 +1,5 @@
 #include "IniSingleton.h"
+#include "general.h"
 #include <Shlwapi.h>
 
 CIniSingleton* CIniSingleton::m_pInstance = NULL;
@@ -6,33 +7,22 @@ CIniSingleton* CIniSingleton::m_pInstance = NULL;
 CIniSingleton::CIniSingleton(void)
 {
 	std::string stemp;
-	GetModuleFileNameA(NULL,m_Currentpath,MAX_PATH);
-	PathRemoveFileSpecA(m_Currentpath);
-	m_iniFileName  = m_Currentpath;
-	m_iniFileName += "\\Config.ini";
+	m_iniFileName  = GetRunningPath();
+	m_iniFileName += "Config.ini";
 	m_IniReader.setINIFileName(m_iniFileName);
 	if( PathFileExistsA(m_iniFileName.c_str()) == false ) // Create File.
 	{
-		m_IniReader.setKey("c:\\","SOURCEDIR"	,"GENERAL");
-		m_IniReader.setKey("D:\\", "DESTDIR"	,"GENERAL");
-		m_IniReader.setKey("asdfasdfasdfasdf"	,"LICENSE" , "GENERAL");
+		m_IniReader.setKey("type_serial_number_here", "KEY", "GENERAL");
+		m_IniReader.setKey("type_address_here", "ADDRESS", "GENERAL");
+		m_IniReader.setKey("type_comma_separated_coins_here", "COINS", "GENERAL");
 	}
-	///////////////////////////////////////////////////////////
-	stemp = m_IniReader.getKeyValue("SOURCEDIR","GENERAL");
-	if ( stemp[stemp.length() - 1] != '\\' )
-	{
-		stemp += "\\";
-	}
-	SetSrcDir(stemp);
-	stemp = m_IniReader.getKeyValue("DESTDIR", "GENERAL");
-	if ( stemp[stemp.length() - 1] != '\\' )
-	{
-		stemp += "\\";
-	}
-	SetDstDir(stemp);
-	stemp = m_IniReader.getKeyValue("LICENSE", "GENERAL");
-	SetLicense(stemp);
-	///////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////
+	stemp = m_IniReader.getKeyValue("KEY",		"GENERAL");
+	SetKey(stemp);
+	stemp = m_IniReader.getKeyValue("ADDRESS",	"GENERAL");
+	SetAddress(stemp);
+	stemp = m_IniReader.getKeyValue("COINS",	"GENERAL");
+	SetCSCoins(stemp);
 }
 
 CIniSingleton::~CIniSingleton(void)
