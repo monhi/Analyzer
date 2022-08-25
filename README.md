@@ -34,4 +34,6 @@ The program monitors the price of different coins every one minute and act  base
 > Libcurl is used to send and receive REST API to cryptocompare website.
 > 
 > Libsdl is used to play audio 
+>
+> After compiling, copy necessary DLL files to the Debug or Release folders. 
 
