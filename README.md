@@ -1,4 +1,4 @@
-# Cryptocurrency Analyzer Program
+# Online Crypto Analyzer 
 I write this program to get rich soon. but after loosing $500 in the market I find that it needs more time and energy and skill to monitor crypto market and earn money. 
 Crypto market is very fluctuating and real expert guys can earn money from it.
 Anyway I decided to develop this program to monitor the price of some  cryptoz and when those cryptoz start to grow in price I buy them and after earning 5 percent or more, I sell them. 
