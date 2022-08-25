@@ -30,4 +30,5 @@ The program monitors the price of different coins every one minute and act  base
 - It saves how many times the coin grows more that 2.5 and 10 percent in a sqlite database to give you some statistical data about it.
 
 > Libcurl is used to send and receive REST API to cryptocompare website.
+> 
 > Libsdl is used to play audio 
