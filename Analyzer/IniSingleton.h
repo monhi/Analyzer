@@ -18,6 +18,12 @@ public:
 	void						SetCSCoins(std::string param){ m_csCoins = param; }
 	std::string					GetCSCoins(){ return m_csCoins; }
 
+	void						SetCoinNumber(int no) { m_coinNumber = no; }
+	int							GetCoinNumber() { return m_coinNumber; }
+
+	void						SetVIPCoins(std::string param) { m_csVipCoins = param; }
+	std::string					GetVIPCoins() { return m_csVipCoins; }
+
 private:
 	CIniSingleton(void);
 	static CIniSingleton*		m_pInstance;
@@ -27,4 +33,6 @@ private:
 	std::string					m_key;
 	std::string					m_address;
 	std::string					m_csCoins;// Comma separated coins.
+	int							m_coinNumber;
+	std::string					m_csVipCoins;
 };

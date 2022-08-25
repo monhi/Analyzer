@@ -6,7 +6,7 @@
 #define		SUCCESS			 0
 #define		FAILURE			-1
 
-#define 	LINE_LENGTH 	512
+#define 	LINE_LENGTH 	8192
 
 typedef std::set<std::string>::iterator					setIterator;
 typedef std::map<std::string, std::string>::iterator	mapIterator;

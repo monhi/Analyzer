@@ -13,16 +13,22 @@ CIniSingleton::CIniSingleton(void)
 	if( PathFileExistsA(m_iniFileName.c_str()) == false ) // Create File.
 	{
 		m_IniReader.setKey("type_serial_number_here", "KEY", "GENERAL");
-		m_IniReader.setKey("type_address_here", "ADDRESS", "GENERAL");
+		//m_IniReader.setKey("type_address_here", "ADDRESS", "GENERAL");
 		m_IniReader.setKey("type_comma_separated_coins_here", "COINS", "GENERAL");
+		//m_IniReader.setKey("12288", "COINSNUMBER", "GENERAL");
+		m_IniReader.setKey("type_comma_separated_vip_coins_here", "VIP", "GENERAL");
 	}
 	////////////////////////////////////////////////////////
-	stemp = m_IniReader.getKeyValue("KEY",		"GENERAL");
+	stemp = m_IniReader.getKeyValue("KEY",			"GENERAL");
 	SetKey(stemp);
-	stemp = m_IniReader.getKeyValue("ADDRESS",	"GENERAL");
-	SetAddress(stemp);
-	stemp = m_IniReader.getKeyValue("COINS",	"GENERAL");
+	//stemp = m_IniReader.getKeyValue("ADDRESS",		"GENERAL");
+	//SetAddress(stemp);
+	stemp = m_IniReader.getKeyValue("COINS",		"GENERAL");
 	SetCSCoins(stemp);
+	//stemp = m_IniReader.getKeyValue("COINSNUMBER",	"GENERAL");
+	//SetCoinNumber(atoi(stemp.c_str()));
+	stemp = m_IniReader.getKeyValue("VIP",			"GENERAL"); 
+	SetVIPCoins(stemp.c_str());
 }
 
 CIniSingleton::~CIniSingleton(void)

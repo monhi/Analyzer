@@ -6,6 +6,15 @@
 #include <Shlwapi.h>
 #include <algorithm>
 #include <string>
+#include <time.h>
+#include <ostream>
+#include <string>
+#include <map>
+#include "curl_easy.h"
+#include "curl_form.h"
+#include "curl_ios.h"
+#include "curl_exception.h"
+
 
 static bool				m_isUpdating	= false;
 static std::string		m_DispensedCash = "";
@@ -300,4 +309,33 @@ void LOGIData(char* buffer, int color)
 	color_printf(color, buffer);
 	color_printf(color, "\n");
 	LOGI << buffer;
+}
+
+void PrintTime()
+{
+	time_t t = time(NULL);
+	struct tm tm = *localtime(&t);
+	printf("%d-%02d-%02d %02d:%02d:%02d\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);	
+}
+
+std::stringstream get_response(std::string url)
+{
+	std::stringstream str;
+	curl::curl_ios<std::stringstream> writer(str);
+
+	curl::curl_easy easy(writer);
+
+	easy.add<CURLOPT_URL>(url.data());
+	easy.add<CURLOPT_FOLLOWLOCATION>(1L);
+	try
+	{
+		easy.perform();
+	}
+	catch (curl::curl_easy_exception error)
+	{
+		auto errors = error.get_traceback();
+		error.print_traceback();
+	}
+
+	return str;
 }
