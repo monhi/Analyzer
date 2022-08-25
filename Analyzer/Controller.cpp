@@ -202,11 +202,11 @@ bool CController::Process_RESTChunk(std::string coins)
 {
 	int cntr = 0;
 	std::string		command;
-	char			path[8192];
+	char			path[1024];
 	std::string		stemp = GetRunningPath();
 
 	stemp += "service_result.dat";
-	memset(path, 0, 8192);
+	memset(path, 0, 1024);
 
 	//sprintf(path, "curl.exe -X POST -H \"Content-Type: application/json\"  -H \"x-api-key:%s \"   -d \"{\\\"currency\\\":\\\"USD\\\",\\\"sort\\\":\\\"rank\\\",\\\"order\\\":\\\"ascending\\\",\\\"offset\\\":0,\\\"limit\\\":%d,\\\"meta\\\":false}\"    %s ", m_key.c_str(),m_coinNumber, m_address.c_str());	
 	//sprintf(path, "curl.exe -X GET -H \"Content-Type: application/json\"  -d \"{\\\"currency\\\":\\\"USD\\\",\\\"sort\\\":\\\"rank\\\",\\\"order\\\":\\\"ascending\\\",\\\"offset\\\":0,\\\"limit\\\":%d,\\\"meta\\\":false}\"    %s ",  , m_address.c_str());
