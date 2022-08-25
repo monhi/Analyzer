@@ -9,7 +9,9 @@ Config.ini sample contents:
 [GENERAL]
 
 COINS=WING,AVAX,UNFI,BTC,ETH,AXS,ALICE,BLZ,GRT,TRB,BABYDOGE,SHIB,SOL,CHZ
+
 KEY=get your code from www.cryptocompare.com and put here
+
 VIP=WING,AVAX,UNFI,SOL,CHZ
 
 - add your favorite coins to COIN key like above ( all upper case)
