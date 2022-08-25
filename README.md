@@ -29,6 +29,9 @@ The program monitors the price of different coins every one minute and act  base
 - When the price of coin decreases it remotes it from the list and also resets the coin info if it decreases to lower than minimum.
 - It saves how many times the coin grows more that 2.5 and 10 percent in a sqlite database to give you some statistical data about it.
 
+> Visual Studio 15 is used to develop this program.
+>
 > Libcurl is used to send and receive REST API to cryptocompare website.
 > 
 > Libsdl is used to play audio 
+
