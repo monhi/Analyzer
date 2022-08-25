@@ -7,6 +7,7 @@ To have flexibility to add or remove coins, I use a config.ini file which has 3 
 Config.ini sample contents:
 
 [GENERAL]
+
 COINS=WING,AVAX,UNFI,BTC,ETH,AXS,ALICE,BLZ,GRT,TRB,BABYDOGE,SHIB,SOL,CHZ
 KEY=get your code from www.cryptocompare.com and put here
 VIP=WING,AVAX,UNFI,SOL,CHZ
