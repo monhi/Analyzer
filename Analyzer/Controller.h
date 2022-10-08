@@ -16,6 +16,7 @@ typedef struct
 {
 	std::string name;
 	double      rate;
+
 	double		maxRate;
 	double		percent;
 	//double	percent;
@@ -47,7 +48,6 @@ private:
 	signal_t						    m_signals[MAX_COINS];
 	bool								m_reportMax;
 	bool								m_reportMin;
-	//int									m_coinNumber;
 
 private:
 	void								waitForSeconds(int sec);

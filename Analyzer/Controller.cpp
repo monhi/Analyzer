@@ -59,10 +59,6 @@ int CController::MainLoop()
 
 		if (Process_REST())
 		{
-			/*
-			system("cls");
-			PrintTime();
-			*/
 			Process_Analyze();
 		}		
 		waitForSeconds(60);// process every one minute.
@@ -108,10 +104,6 @@ int CController::ProcessCoins()
 			m_VIP.insert(substr);
 		}
 	}
-
-
-
-
 	return SUCCESS;
 }
 
@@ -171,6 +163,7 @@ void CController::ShowResult()
 		for (int i = 0; i < m_idx; i++)
 		{
 			sprintf(tempBuffer, "%-32s%-16.4f%-16.4f%-16.4f", m_signals[i].name.c_str(), m_signals[i].rate, m_signals[i].maxRate,m_signals[i].percent);
+
 			if (m_VIP.find(m_signals[i].name) != m_VIP.end())
 			{
 				LOGIData(tempBuffer, YELLOW);
@@ -186,7 +179,9 @@ void CController::ShowResult()
 			std::string stemp = GetRunningPath();
 			stemp += "Audio\\Signal.wav";
 			m_pAudioPlayer->PlayWave(stemp.c_str());
+
 			m_reportMax = false;
+
 		}
 	}
 }
@@ -225,12 +220,10 @@ bool CController::Process_RESTChunk(std::string coins)
 	system(command.c_str());
 
 
-
 	FILE* f = fopen(stemp.c_str(), "rb");
 	//if (json.str().length())
 	if(f)
 	{
-
 		fseek(f, 0, SEEK_END);
 		int size = ftell(f);
 		fseek(f, 0, SEEK_SET);
@@ -242,6 +235,7 @@ bool CController::Process_RESTChunk(std::string coins)
 		command = "del ";
 		command += stemp;
 		system(command.c_str());
+
 
 		/*
 		if (size<1000)
@@ -270,6 +264,7 @@ bool CController::Process_RESTChunk(std::string coins)
 		std::string							code;
 		double								rate;
 		////////////////////////////////////////////////////
+
 		std::string							str = buffer;//json.str();
 		try
 		{
@@ -359,7 +354,9 @@ bool CController::Process_RESTChunk(std::string coins)
 		}
 		///////////////////////////////////////////////
 
+
 		delete[] buffer;
+
 		return true;
 	}
 	return false;

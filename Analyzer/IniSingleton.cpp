@@ -19,8 +19,15 @@ CIniSingleton::CIniSingleton(void)
 	////////////////////////////////////////////////////////
 	stemp = m_IniReader.getKeyValue("KEY",			"GENERAL");
 	SetKey(stemp);
+
 	stemp = m_IniReader.getKeyValue("COINS",		"GENERAL");
 	SetCSCoins(stemp);
+
+	//stemp = m_IniReader.getKeyValue("ADDRESS",		"GENERAL");
+	//SetAddress(stemp);
+	//stemp = m_IniReader.getKeyValue("COINSNUMBER",	"GENERAL");
+	//SetCoinNumber(atoi(stemp.c_str()));
+
 	stemp = m_IniReader.getKeyValue("VIP",			"GENERAL"); 
 	SetVIPCoins(stemp.c_str());
 }

@@ -25,6 +25,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	plog::init(plog::debug, stemp.c_str(), (1024 * 1024), 5);
 	CIniSingleton* m_instance = CIniSingleton::getInstance();
 
+	// Disable Console Close button.
+	// In this way program can be closed by menu item of software.
+	HWND hwnd = GetConsoleWindow();
+	HMENU hmenu = GetSystemMenu(hwnd, false);
+	EnableMenuItem(hmenu, SC_CLOSE, MF_GRAYED);
+
+
 	sprintf(logbuff, "Preparing to start Analyzer server version %d.%d.%d.%d  ...", i1, i2, i3, i4);
 
 	//ShowWindow(GetConsoleWindow(), SW_MINIMIZE);
@@ -82,7 +89,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	sprintf(logbuff, "Finish Analyzer server version %d.%d.%d.%d  ...\n", i1, i2, i3, i4);
 	LOGIData(logbuff, GREEN);
 
-	//PLOG_INFO << "Program exit.";
 	Sleep(1000);
 	delete m_instance;
 	return SUCCESS;
