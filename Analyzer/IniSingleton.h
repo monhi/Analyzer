@@ -5,18 +5,18 @@
 class CIniSingleton
 {
 public:
-					~CIniSingleton(void);
-	static			CIniSingleton* getInstance();
+								~CIniSingleton(void);
+	static						CIniSingleton* getInstance();
 
 	void						SetKey(std::string param){ m_key = param; }
 	std::string					GetKey(){ return m_key; }
 
-	void						SetAddress(std::string param){ m_address = param; }
-	std::string					GetAddress(){ return m_address; }
-
 
 	void						SetCSCoins(std::string param){ m_csCoins = param; }
 	std::string					GetCSCoins(){ return m_csCoins; }
+
+	void						SetVIPCoins(std::string param) { m_csVipCoins = param; }
+	std::string					GetVIPCoins() { return m_csVipCoins; }
 
 private:
 	CIniSingleton(void);
@@ -25,6 +25,6 @@ private:
 	char						m_Currentpath[MAX_PATH];
 	std::string					m_iniFileName;
 	std::string					m_key;
-	std::string					m_address;
 	std::string					m_csCoins;// Comma separated coins.
+	std::string					m_csVipCoins;
 };

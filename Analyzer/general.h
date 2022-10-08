@@ -2,25 +2,27 @@
 #define		WIN_OS					1
 
 #include "plog\log.h"
+#include <ostream>
+
 
 //#include <openssl/ssl.h>
 //#include <openssl/err.h>
 //#include <openssl/pem.h>
 //#include <openssl/pkcs12.h>
 #include <process.h>
-
 #include <string>
 #include <map>
-#include "stdafx.h"
+//#include "stdafx.h"
 
 #ifdef	 WIN_OS
-#define _WINSOCKAPI_
+//#define _WINSOCKAPI_
 #include <string>
-#include <WinSock2.h>
-#include <WS2tcpip.h>
-//#include <windows.h>
-#include <windef.h>
-#include <winnt.h>
+//#include <WinSock2.h>
+//#include <WS2tcpip.h>
+#include <windows.h>
+
+#pragma comment(lib, "Ws2_32.lib")
+
 #include <vector>
 
 #elif defined LINUX_OS
@@ -36,8 +38,14 @@ typedef unsigned short	u16;
 typedef unsigned int	u32;
 typedef std::map<std::string,std::string>::iterator string_iterator;
 
+
+#define		SELL					 2
+#define		SIGNAL					 1
+#define		SILENCE					 0
+
 #define 	SUCCESS					 0
 #define 	FAILURE					-1
+
 
 
 #define		MAX_FONT_NUM				10
@@ -79,16 +87,18 @@ typedef unsigned long long			u64;
 #define	NAMED_MUTEX_CONSTANT_TEXT	L"MyAnalyzerProgramThatRunsEveryday.1.0.0.0"
 
 
-void			LOGIData					(char* buffer, int color);
-int				color_printf				(int color, char* string, ...);
-int				GetProgramVersionInfo		(int &maj,int &min, int &build , int &revision);
-std::string		utf8_encode					(const std::wstring &wstr);
-std::wstring	utf8_decode					(const std::string &str);
-bool			DirExists					(const std::string& dirName_in);
-bool			FileExists					(const std::string& dirName_in);
-std::string		ExtractJSON					(std::string&	beta);
-void			read_directory				(const std::string name, stringvec& v,std::string pan);
-std::wstring	my_utf8_to_utf16			(const std::string& utf8);
-std::string		GetRunningPath				();
-void			gen_random					(char *s, size_t len);
-void			DisableQuickEdit			();
+void				LOGIData					(char* buffer, int color);
+int					color_printf				(int color, char* string, ...);
+int					GetProgramVersionInfo		(int &maj,int &min, int &build , int &revision);
+std::string			utf8_encode					(const std::wstring &wstr);
+std::wstring		utf8_decode					(const std::string &str);
+bool				DirExists					(const std::string& dirName_in);
+bool				FileExists					(const std::string& dirName_in);
+std::string			ExtractJSON					(std::string&	beta);
+void				read_directory				(const std::string name, stringvec& v,std::string pan);
+std::wstring		my_utf8_to_utf16			(const std::string& utf8);
+std::string			GetRunningPath				();
+void				gen_random					(char *s, size_t len);
+void				DisableQuickEdit			();
+void				PrintTime					();
+std::stringstream	get_response				(std::string url);
