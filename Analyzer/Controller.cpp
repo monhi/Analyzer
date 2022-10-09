@@ -21,10 +21,10 @@ using namespace Json;
 
 bool compare(signal_t a, signal_t b)
 {
-	if (a.rate >= b.rate)
-		return 1;
-	else
+	if (a.percent >= b.percent)
 		return 0;
+	else
+		return 1;
 }
 
 CController::CController()
