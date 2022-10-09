@@ -27,6 +27,7 @@ The program monitors the price of different coins every one minute and act  base
 
 - When a coin loses value at least 3 percent against Bitcoin price, It shows in the list of coins.
 - It plays a sound to get your attention
+- Curl program must be installed on the running system.
 
 
 > Visual Studio 15 is used to develop this program.
