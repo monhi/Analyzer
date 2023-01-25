@@ -1,5 +1,5 @@
 # Online Crypto Analyzer 
-I write this program to get rich soon. but after loosing $500 in the market I find that it needs more time and energy and skill to monitor crypto market and earn money. 
+I write this program to get rich soon. but after losing $500 in the market I find that it needs more time and energy and skills to monitor crypto market and earn money. 
 Crypto market is very fluctuating and expert guys can earn money from it.
 Anyway I decided to develop this program to monitor the price of some  cryptoz and when those cryptoz start losing value against BTC, I buy them and after earning 5 percent or more, I sell them. 
 I get a key from www.cryptocompare.com and use the API of them to get the price of those coins.
@@ -30,7 +30,7 @@ The program monitors the price of different coins every one minute and act  base
 - Curl program must be installed on the running system.
 
 
-> Visual Studio 15 is used to develop this program.
+> Visual Studio (C++) 15 is used to develop this program.
 >
 > Curl command line is used to send and receive REST API to cryptocompare website.
 > 
