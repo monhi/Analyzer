@@ -53,7 +53,6 @@ void CCoinNode::Invalidate()
 	m_sd					= -1;
 	m_min					=  100000000000;
 	m_max					= -1;
-
 	m_last					= -1;
 }
 

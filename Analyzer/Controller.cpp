@@ -48,7 +48,8 @@ CController::CController()
 	QueryPerformanceCounter(&m_t1);
 	m_time_idx	= 1;
 	m_Running	= true;
-	m_thread	= std::thread(std::bind(&CController::MainLoop, this));
+	//m_thread	= std::thread(std::bind(&CController::MainLoop, this));
+	m_thread	= std::thread(&CController::MainLoop,this);
 }
 
 
@@ -134,14 +135,16 @@ void CController::Process_Analyze()
 			m_signals[m_idx].rate		= rate;
 			m_signals[m_idx].maxRate	= max_rate;
 			m_signals[m_idx].percent    = percent;
-
-			m_idx++;
+			m_signals[m_idx].color		= GREEN;
 			if (report)
 			{
+				m_signals[m_idx].color = MAGENTA;
 				m_reportMax = true;
 			}
+			m_idx++;
 		}
 	}
+	//m_bct
 	// Show the result.
 	ShowResult();
 }
@@ -170,7 +173,7 @@ void CController::ShowResult()
 			}
 			else
 			{
-				LOGIData(tempBuffer, GREEN);
+				LOGIData(tempBuffer, m_signals[i].color);
 			}
 		}
 

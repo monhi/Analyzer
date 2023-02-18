@@ -19,6 +19,7 @@ typedef struct
 
 	double		maxRate;
 	double		percent;
+	int			color;
 	//double	percent;
 	//double	hitrate;
 }	signal_t;
@@ -37,7 +38,8 @@ private:
 	std::atomic<bool>					m_Running;
 	std::vector<std::string>			m_CoinNames;
 	std::map<std::string, CCoinNode*>	m_Coins;
-	//std::string							m_address;
+	int									m_BTCPrice[4];
+	//std::string						m_address;
 	std::string							m_key;
 	std::string							m_coins;
 	std::string							m_vipCoins;
