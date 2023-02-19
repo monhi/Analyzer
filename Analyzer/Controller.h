@@ -11,6 +11,7 @@
 
 
 #define MAX_COINS   512
+#define BTC_SIZE	5
 
 typedef struct
 {
@@ -38,7 +39,7 @@ private:
 	std::atomic<bool>					m_Running;
 	std::vector<std::string>			m_CoinNames;
 	std::map<std::string, CCoinNode*>	m_Coins;
-	int									m_BTCPrice[4];
+	double								m_BTCPrice[BTC_SIZE];	
 	//std::string						m_address;
 	std::string							m_key;
 	std::string							m_coins;

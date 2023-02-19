@@ -44,6 +44,11 @@ CController::CController()
 	m_vipCoins   = m_instance->GetVIPCoins();
 	ProcessCoins();
 
+	for (int i = 0; i < BTC_SIZE; i++)
+	{
+		m_BTCPrice[i] = 0;
+	}
+
 	QueryPerformanceFrequency(&m_frequency);
 	QueryPerformanceCounter(&m_t1);
 	m_time_idx	= 1;
@@ -146,6 +151,11 @@ void CController::Process_Analyze()
 	}
 	//m_bct
 	// Show the result.
+	for (int i = BTC_SIZE-1; i >0 ; i--)
+	{
+		m_BTCPrice[i] = m_BTCPrice[i - 1];
+	}
+	m_BTCPrice[0] = m_Coins["BTC"]->GetRate();
 	ShowResult();
 }
 
@@ -154,12 +164,14 @@ void CController::ShowResult()
 	char			tempBuffer[256];
 	system("cls");
 	PrintTime();
+	color_printf(CYAN, "%-32s%-16s%-16s%-16s%-16s%-16s\n", "NAME", "RATE(Now)", "RATE(-1)", "RATE(-2)", "RATE(-3)", "RATE(-4)");
+	sprintf(tempBuffer, "%-32s%-16.4f%-16.4f%-16.4f%-16.4f%-16.4f", "BITCOIN", m_BTCPrice[0], m_BTCPrice[1], m_BTCPrice[2], m_BTCPrice[3], m_BTCPrice[4]);
 
-	//color_printf(GREEN, "%-32s%-16s%-16s%-16s\n", "NAME", "RATE", "PREV_RATE");
-	color_printf(GREEN, "%-32s%-16s%-16s%-16s\n", "NAME", "RATE","MAX_RATE","PERCENT");
-	sprintf(tempBuffer, "%-32s%-16.4f", "BITCOIN", m_Coins["BTC"]->GetRate());
+	LOGIData(tempBuffer, CYAN);
+	sprintf(tempBuffer, "");
 	LOGIData(tempBuffer, CYAN);
 
+	color_printf(GREEN, "%-32s%-16s%-16s%-16s\n", "NAME", "RATE", "MAX_RATE", "PERCENT");
 	if (m_idx)
 	{
 		std::sort(m_signals, m_signals + m_idx, compare);		

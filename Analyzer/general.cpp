@@ -10,10 +10,12 @@
 #include <ostream>
 #include <string>
 #include <map>
+/*
 #include "curl_easy.h"
 #include "curl_form.h"
 #include "curl_ios.h"
 #include "curl_exception.h"
+*/
 
 
 static bool				m_isUpdating	= false;
@@ -317,25 +319,27 @@ void PrintTime()
 	struct tm tm = *localtime(&t);
 	printf("%d-%02d-%02d %02d:%02d:%02d\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);	
 }
-
+/*
 std::stringstream get_response(std::string url)
 {
-	std::stringstream str;
-	curl::curl_ios<std::stringstream> writer(str);
+std::stringstream str;
+curl::curl_ios<std::stringstream> writer(str);
 
-	curl::curl_easy easy(writer);
+curl::curl_easy easy(writer);
 
-	easy.add<CURLOPT_URL>(url.data());
-	easy.add<CURLOPT_FOLLOWLOCATION>(1L);
-	try
-	{
-		easy.perform();
-	}
-	catch (curl::curl_easy_exception error)
-	{
-		auto errors = error.get_traceback();
-		error.print_traceback();
-	}
-
-	return str;
+easy.add<CURLOPT_URL>(url.data());
+easy.add<CURLOPT_FOLLOWLOCATION>(1L);
+try
+{
+easy.perform();
 }
+catch (curl::curl_easy_exception error)
+{
+auto errors = error.get_traceback();
+error.print_traceback();
+}
+
+return str;
+}
+
+*/
