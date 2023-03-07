@@ -28,8 +28,6 @@ private:
 	u32						m_size;
 	double					m_mean;
 	double					m_sd;
-	double					m_startRatio;
-	double					m_hitRatio;
 
 	double					m_min;
 	double					m_max;

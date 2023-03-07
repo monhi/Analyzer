@@ -10,15 +10,13 @@ CCoinNode::CCoinNode(CController* ptr,std::string name)
 	m_pParent			= ptr;
 	m_CoinName			= name;
 
-	m_btcRatio			= 1.03;
-	m_startRatio		= 1.05;
-	m_hitRatio			= 1.1;	
+	m_btcRatio			= 1.02;
 	m_maxBTCPrice		= 0;
 	m_minBTCPrice		= 0;
 	m_BTCMin			= 1000000000;
 	m_BTCReported		= false;
-	//m_SDRatio			= 0.02;
-	
+
+
 	m_db		= new CCryptoDB();
 	m_db->OpenDB();
 	m_db->GetInfo(m_CoinName, m_max_total, m_max_hit);
@@ -76,12 +74,12 @@ int CCoinNode::ProcessBTC(std::string & name, double & rate,double& max_rate,dou
 		return SILENCE;
 	}
 	double l_rate = m_last / m_BTCRate;
-	if (l_rate < m_BTCMin)
+	if ( l_rate < m_BTCMin )
 	{
 		m_BTCMin = l_rate;
 		m_minBTCPrice = m_last;
 	}
-	if (l_rate > m_BTCMin * m_btcRatio)
+	if ( l_rate > m_BTCMin * m_btcRatio )
 	{
 		name = m_CoinName;
 		rate = m_last;

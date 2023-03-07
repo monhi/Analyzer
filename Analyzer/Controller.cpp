@@ -171,7 +171,7 @@ void CController::ShowResult()
 	sprintf(tempBuffer, "");
 	LOGIData(tempBuffer, CYAN);
 
-	color_printf(GREEN, "%-32s%-16s%-16s%-16s\n", "NAME", "RATE", "MAX_RATE", "PERCENT");
+	color_printf(GREEN, "%-32s%-16s%-16s%-16s\n", "NAME", "RATE", "MIN_RATE", "PERCENT");
 	if (m_idx)
 	{
 		std::sort(m_signals, m_signals + m_idx, compare);		
