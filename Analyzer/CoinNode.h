@@ -31,8 +31,8 @@ private:
 
 	double					m_min;
 	double					m_max;
-	double					m_maxBTCPrice;
-	double					m_minBTCPrice;
+	double					m_maxPrice;
+	double					m_minPrice;
 	bool					m_BTCReported;
 	/////////////////////////////////////
 	int						m_max_hit;
@@ -41,7 +41,8 @@ private:
 	double					m_BTCRate;
 	double					m_BTCMax;
 	double					m_BTCMin;
-	double					m_btcRatio;
+	double					m_btcMinRatio;
+	double					m_btcMaxRatio;
 	/////////////////////////////////////
 	int						m_total;
 	int						m_hit;

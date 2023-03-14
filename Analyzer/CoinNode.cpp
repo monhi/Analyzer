@@ -9,18 +9,17 @@ CCoinNode::CCoinNode(CController* ptr,std::string name)
 {
 	m_pParent			= ptr;
 	m_CoinName			= name;
-
-	m_btcRatio			= 1.02;
-	m_maxBTCPrice		= 0;
-	m_minBTCPrice		= 0;
+	m_btcMinRatio		= 0.97;
+	m_btcMaxRatio		= 1.02;
+	m_maxPrice			= 0;
+	m_minPrice			= 0;
 	m_BTCMin			= 1000000000;
+	m_BTCMax			= 0;
 	m_BTCReported		= false;
-
 
 	m_db		= new CCryptoDB();
 	m_db->OpenDB();
 	m_db->GetInfo(m_CoinName, m_max_total, m_max_hit);
-
 	Invalidate();
 }
 
@@ -45,7 +44,6 @@ void CCoinNode::Invalidate()
 		m_buffer[i].active = false;
 		m_buffer[i].rate = 0;
 	}
-
 	m_empty					= true;
 	m_size					=  0;
 	m_front					=  0;
@@ -65,8 +63,7 @@ void CCoinNode::Reset()
 }
 
 
-
-int CCoinNode::ProcessBTC(std::string & name, double & rate,double& max_rate,double& percent ,bool & report)
+int CCoinNode::ProcessBTC(std::string & name, double & rate,double& min_max_rate,double& percent ,bool & report)
 {
 	report = false;
 	if (m_BTCRate == 0)
@@ -76,43 +73,35 @@ int CCoinNode::ProcessBTC(std::string & name, double & rate,double& max_rate,dou
 	double l_rate = m_last / m_BTCRate;
 	if ( l_rate < m_BTCMin )
 	{
-		m_BTCMin = l_rate;
-		m_minBTCPrice = m_last;
+		m_BTCMin	= l_rate;
+		m_minPrice	= m_last;
 	}
-	if ( l_rate > m_BTCMin * m_btcRatio )
+	if ( l_rate > m_BTCMin * m_btcMaxRatio )
 	{
-		name = m_CoinName;
-		rate = m_last;
-		max_rate = m_minBTCPrice;
-		percent = l_rate / m_BTCMin;
-		if (m_BTCReported == false)
+		name			= m_CoinName;
+		rate			= m_last;
+		min_max_rate	= m_minPrice;
+		percent			= l_rate / m_BTCMin;
+		if ( m_BTCReported == false )
 		{
-			report = true;
-			m_BTCReported = true;
+			report			= true;
+			m_BTCReported	= true;
 		}
 		return SIGNAL;
 	}
-	m_BTCReported = false;
-	return SILENCE;
 
-/*
-	report = false;
-	if (m_BTCRate == 0)
-	{
-		return SILENCE;
-	}
-	double l_rate = m_last / m_BTCRate;
 	if (l_rate > m_BTCMax)
 	{
-		m_BTCMax		= l_rate;
-		m_maxBTCPrice	= m_last;
+		m_BTCMax	= l_rate;
+		m_maxPrice	= m_last;
 	}
-	if (l_rate < m_BTCMax * m_btcRatio)
+
+	if ( l_rate < m_BTCMax * m_btcMinRatio )
 	{
-		name		= m_CoinName;
-		rate		= m_last;
-		max_rate	= m_maxBTCPrice;
-		percent		= l_rate / m_BTCMax;
+		name			= m_CoinName;
+		rate			= m_last;
+		min_max_rate	= m_maxPrice;
+		percent			= l_rate / m_BTCMax;
 		if (m_BTCReported == false)
 		{
 			report = true;
@@ -122,7 +111,6 @@ int CCoinNode::ProcessBTC(std::string & name, double & rate,double& max_rate,dou
 	}
 	m_BTCReported = false;
 	return SILENCE;
-*/
 }
 
 
