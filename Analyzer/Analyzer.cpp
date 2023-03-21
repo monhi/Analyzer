@@ -32,7 +32,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	EnableMenuItem(hmenu, SC_CLOSE, MF_GRAYED);
 
 
-	sprintf(logbuff, "Preparing to start Analyzer server version %d.%d.%d.%d  ...", i1, i2, i3, i4);
+	
 
 	//ShowWindow(GetConsoleWindow(), SW_MINIMIZE);
 	HANDLE hMutex = OpenMutex(MUTEX_ALL_ACCESS, 0, NAMED_MUTEX_CONSTANT_TEXT);
@@ -51,7 +51,10 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	CController* m_pController = new CController();
 	system("cls");
-	LOGIData("Analyzer server is started. to quit: press ESC button ...", GREEN);
+
+	sprintf(logbuff, "Preparing to start Analyzer server version %d.%d.%d.%d  ...", i1, i2, i3, i4);
+	LOGIData(logbuff,GREEN);
+	//LOGIData("Analyzer server %d.%d.%d.%d is started. to quit: press ESC button ...", GREEN);
 	
 	int ch;
 	while ((ch = _getch()) != 27)
