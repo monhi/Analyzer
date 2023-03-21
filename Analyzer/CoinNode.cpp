@@ -10,7 +10,7 @@ CCoinNode::CCoinNode(CController* ptr,std::string name)
 	m_pParent			= ptr;
 	m_CoinName			= name;
 	m_btcMinRatio		= 0.97;
-	m_btcMaxRatio		= 1.02;
+	m_btcMaxRatio		= 1.03;
 	m_maxPrice			= 0;
 	m_minPrice			= 0;
 	m_BTCMin			= 1000000000;
