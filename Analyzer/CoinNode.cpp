@@ -65,52 +65,97 @@ void CCoinNode::Reset()
 
 int CCoinNode::ProcessBTC(std::string & name, double & rate,double& min_max_rate,double& percent ,bool & report)
 {
-	report = false;
-	if (m_BTCRate == 0)
+
+	if ( m_CoinName == "BTC" )
 	{
+		if (m_BTCMin > m_BTCRate)
+		{
+			m_BTCMin = m_BTCRate;
+		}
+		
+		if (m_BTCMax < m_BTCRate)
+		{
+			m_BTCMax = m_BTCRate;
+		}
+
+		if ( (m_BTCRate/m_BTCMin) > m_btcMaxRatio)
+		{
+			name = m_CoinName;
+			rate = m_last;
+			min_max_rate = m_BTCMin;
+			percent = m_BTCRate / m_BTCMin;
+			if (m_BTCReported == false)
+			{
+				report = true;
+				m_BTCReported = true;
+			}
+			return SIGNAL;
+		}
+
+		if ( (m_BTCRate/m_BTCMax) < m_btcMinRatio)
+		{
+			name = m_CoinName;
+			rate = m_BTCRate;
+			min_max_rate = m_BTCMax;
+			percent = m_BTCRate / m_BTCMax;
+			if (m_BTCReported == false)
+			{
+				report = true;
+				m_BTCReported = true;
+			}
+			return SIGNAL;
+		}
 		return SILENCE;
 	}
-	double l_rate = m_last / m_BTCRate;
-	if ( l_rate < m_BTCMin )
+	else
 	{
-		m_BTCMin	= l_rate;
-		m_minPrice	= m_last;
-	}
-	if ( l_rate > m_BTCMin * m_btcMaxRatio )
-	{
-		name			= m_CoinName;
-		rate			= m_last;
-		min_max_rate	= m_minPrice;
-		percent			= l_rate / m_BTCMin;
-		if ( m_BTCReported == false )
+		report = false;
+		if (m_BTCRate == 0)
 		{
-			report			= true;
-			m_BTCReported	= true;
+			return SILENCE;
 		}
-		return SIGNAL;
-	}
-
-	if (l_rate > m_BTCMax)
-	{
-		m_BTCMax	= l_rate;
-		m_maxPrice	= m_last;
-	}
-
-	if ( l_rate < m_BTCMax * m_btcMinRatio )
-	{
-		name			= m_CoinName;
-		rate			= m_last;
-		min_max_rate	= m_maxPrice;
-		percent			= l_rate / m_BTCMax;
-		if (m_BTCReported == false)
+		double l_rate = m_last / m_BTCRate;
+		if (l_rate < m_BTCMin)
 		{
-			report = true;
-			m_BTCReported = true;
+			m_BTCMin = l_rate;
+			m_minPrice = m_last;
 		}
-		return SIGNAL;
+		if (l_rate > m_BTCMin * m_btcMaxRatio)
+		{
+			name = m_CoinName;
+			rate = m_last;
+			min_max_rate = m_minPrice;
+			percent = l_rate / m_BTCMin;
+			if (m_BTCReported == false)
+			{
+				report = true;
+				m_BTCReported = true;
+			}
+			return SIGNAL;
+		}
+
+		if (l_rate > m_BTCMax)
+		{
+			m_BTCMax = l_rate;
+			m_maxPrice = m_last;
+		}
+
+		if (l_rate < m_BTCMax * m_btcMinRatio)
+		{
+			name = m_CoinName;
+			rate = m_last;
+			min_max_rate = m_maxPrice;
+			percent = l_rate / m_BTCMax;
+			if (m_BTCReported == false)
+			{
+				report = true;
+				m_BTCReported = true;
+			}
+			return SIGNAL;
+		}
+		m_BTCReported = false;
+		return SILENCE;
 	}
-	m_BTCReported = false;
-	return SILENCE;
 }
 
 
