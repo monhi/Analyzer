@@ -177,7 +177,7 @@ void CController::ShowResult()
 		std::sort(m_signals, m_signals + m_idx, compare);		
 		for (int i = 0; i < m_idx; i++)
 		{
-			sprintf(tempBuffer, "%-32s%-16.4f%-16.4f%-16.4f", m_signals[i].name.c_str(), m_signals[i].rate, m_signals[i].maxRate,m_signals[i].percent);
+			sprintf(tempBuffer, "%-32s%-16.8f%-16.8f%-16.4f", m_signals[i].name.c_str(), m_signals[i].rate, m_signals[i].maxRate,m_signals[i].percent);
 
 			if (m_VIP.find(m_signals[i].name) != m_VIP.end())
 			{
