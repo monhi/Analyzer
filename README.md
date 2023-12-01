@@ -21,7 +21,7 @@ VIP=WING,AVAX,UNFI,SOL,CHZ
 - get an API  key from www.cryptocompare.com  and save it in KEY 
 - It is possible to have some VIP coins that when they start to grow, they will be listed with different color (YELLOW) to get your attention.
 
-## How program works ##
+## How this program works ##
 
 The program monitors the price of different coins every one minute and act  based on following rules:
 
